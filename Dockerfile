@@ -11,10 +11,13 @@ RUN cargo build --release
 
 # ------------------------------------------------------------
 # Stage 2: Create a separate image for the compiled application
-FROM debian:jessie-slim
+FROM debian:stretch-slim
+RUN apt-get update && apt-get -y install openssl
+
 
 # Copies the binary from the "build" stage to the current stage
-COPY --from=build pathfinder/pathfinder/target/release/pathfinder .
+WORKDIR /app
+COPY --from=build pathfinder/pathfinder/target/release/pathfinder /app
 
 ENV SECURED_MODE="no" \
     VALIDATE_TOKEN="no" \
@@ -31,10 +34,11 @@ ENV SECURED_MODE="no" \
     REDIS_PASSWORD="" \
     JWT_SECRET="secret" \
     SSL_CERTIFICATE="" \
-    SSL_KEY=""
+    SSL_KEY="" \ 
+    LOG_LEVEL="info"
 
 EXPOSE 9000
 
 # Configures the startup
-ENTRYPOINT ["/app-entrypoint.sh"]
-CMD ["/run.sh"]
+COPY ./run.sh ./run.sh
+CMD ["./run.sh"]
