@@ -11,7 +11,9 @@ pathfinder:
   ports:
     - 9000:9000
   environment:
-    - ip=my_password
+    - VALIDATE_TOKEN=yes
+    - JWT_SECRET=super_secret_password
+    - LOG_LEVEL=error
 ``` 
 - For manual execution add a `-e` option with each variable and value
 
@@ -32,3 +34,4 @@ Available variables:
 - `JWT_SECRET`: Secret key for a JWT validation. Default: **secret**
 - `SSL_CERTIFICATE`: Path to a SSL certificate. Default: an empty string
 - `SSL_KEY`: Path to a SSL public key. Default: an empty string
+- `LOG_LEVEL`: Logging level for the application. Default: **info**
