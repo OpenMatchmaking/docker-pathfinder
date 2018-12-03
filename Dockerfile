@@ -35,5 +35,8 @@ ENV SECURED_MODE="no" \
 EXPOSE 9000
 
 # Configures the startup
+COPY ./wait-for.sh ./docker-entrypoint.sh /
 COPY ./run.sh ./run.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["./run.sh"]

@@ -29,3 +29,13 @@ Available variables:
 - `SSL_CERTIFICATE`: Path to a SSL certificate. Default: an empty string
 - `SSL_KEY`: Path to a SSL public key. Default: an empty string
 - `LOG_LEVEL`: Logging level for the application. Default: **info**
+
+# Docker entrypoint variables 
+| Name              | Description                                          | Default value | Values        |      
+|-------------------|------------------------------------------------------|---------------|---------------|
+| RABBITMQ_HOST     | Hostname of the RabbitMQ instance.                   | rabbitmq      | –             |
+| RABBITMQ_PORT     | Listened port by the RabbitMQ instance.              | 5672          | –             |
+| SERVICE_HOST      | Hostname of the service.                             | localhost     | –             |
+| SERVICE_PORT      | Listened port by the service.                        | 8000          | –             |                
+| WAIT_FOR_RABBITMQ | Wait until the RabbitMQ container isn't initialized. | `false`       | `false` or a positive integer value |
+| WAIT_FOR_SERVICE  | Wait until the service container isn't initialized.  | `false`       | `false` or a positive integer value |
