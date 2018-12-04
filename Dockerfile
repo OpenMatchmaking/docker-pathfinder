@@ -12,7 +12,7 @@ RUN cargo build --release
 # ------------------------------------------------------------
 # Stage 2: Create a separate image for the compiled application
 FROM debian:stretch-slim
-RUN apt-get update && apt-get -y install openssl
+RUN apt-get update && apt-get -y install openssl netcat
 
 
 # Copies the binary from the "build" stage to the current stage
