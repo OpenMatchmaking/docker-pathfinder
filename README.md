@@ -11,7 +11,6 @@ pathfinder:
   ports:
     - 9000:9000
   environment:
-    - JWT_SECRET=super_secret_password
     - LOG_LEVEL=error
 ``` 
 - For manual execution add a `-e` option with each variable and value
