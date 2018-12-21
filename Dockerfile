@@ -4,6 +4,7 @@ FROM rust:1.31 as build
 # Get the latest code from pathfinder's master branch
 RUN apt-get update && apt-get install git
 RUN git clone https://github.com/OpenMatchmaking/pathfinder.git
+RUN cd pathfinder && git checkout 1.0.0
 
 # And built it in release mode
 WORKDIR pathfinder/pathfinder
