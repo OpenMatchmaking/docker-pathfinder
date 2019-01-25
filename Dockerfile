@@ -1,5 +1,5 @@
 # Stage 1: Build an application from a source code 
-FROM rust:1.31 as build
+FROM rust:1.32 as build
 
 # Get the latest code from pathfinder's master branch
 RUN apt-get update && apt-get install git
